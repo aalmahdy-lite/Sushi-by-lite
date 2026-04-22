@@ -5,7 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sushi by Lite — Secure transactions for your taste buds</title>
     <meta name="description" content="Secure transactions for your taste buds" />
-    <script type="module" crossorigin src="/Sushi-by-lite/assets/index-CXZddCIq.js"></script>
+    <script>
+      // GitHub Pages SPA redirect decoder: restores the real path from the
+      // query string set by 404.html before React Router mounts.
+      (function () {
+        var l = window.location;
+        if (l.search.indexOf('?p=/') === 0 || l.search.indexOf('&p=/') > -1) {
+          var q = l.search.slice(1).split('&').reduce(function (acc, kv) {
+            var i = kv.indexOf('=');
+            acc[kv.slice(0, i)] = kv.slice(i + 1);
+            return acc;
+          }, {});
+          if (q.p !== undefined) {
+            var newPath =
+              l.pathname.replace(/\/$/, '') +
+              q.p.replace(/~and~/g, '&') +
+              (q.q ? '?' + q.q.replace(/~and~/g, '&') : '') +
+              l.hash;
+            window.history.replaceState(null, '', newPath);
+          }
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/Sushi-by-lite/assets/index-B9YmeUsD.js"></script>
     <link rel="stylesheet" crossorigin href="/Sushi-by-lite/assets/index-BOQCatVN.css">
   </head>
   <body>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Sushi by Lite</title>
+    <script>
+      // GitHub Pages SPA redirect: preserve the requested path+query+hash
+      // and forward it to index.html under the project base, so BrowserRouter
+      // can resolve the route on load.
+      (function () {
+        var segmentCount = 1; // project site: /<repo>/...
+        var l = window.location;
+        var path = l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/';
+        var rest = l.pathname.slice(path.length);
+        var redirect =
+          l.protocol + '//' + l.host + path +
+          '?p=/' + rest.replace(/&/g, '~and~') +
+          (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash;
+        l.replace(redirect);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
