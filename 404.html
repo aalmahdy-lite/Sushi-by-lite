@@ -8,10 +8,11 @@
       // and forward it to index.html under the project base, so BrowserRouter
       // can resolve the route on load.
       (function () {
-        var segmentCount = 1; // project site: /<repo>/...
+        // User/org site at domain root (base: "/"). Use 1 for project sites (/<repo>/).
+        var segmentCount = 0;
         var l = window.location;
         var path = l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/';
-        var rest = l.pathname.slice(path.length);
+        var rest = l.pathname.slice(path.length).replace(/\/$/g, '');
         var redirect =
           l.protocol + '//' + l.host + path +
           '?p=/' + rest.replace(/&/g, '~and~') +
